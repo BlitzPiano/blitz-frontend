@@ -1,0 +1,3 @@
+[submodule "blitz-client"]
+	path = blitz-client
+	url = git@github.com:BlitzPiano/blitz-client.git
