@@ -12,6 +12,7 @@ import Piano from './Piano/Piano'
 import RoomNotice from './RoomNotice/RoomNotice'
 import SitebanModal from './Modals/SitebanModal/SitebanModal'
 import { TopButton } from './TopButton/TopButton'
+import gClient from './Client'
 
 function App() {
   return (

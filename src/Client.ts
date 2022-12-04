@@ -1,6 +1,23 @@
 import { Client } from './MPPCloneClient';
 
 console.log("%cWelcome to MPP's developer console!", "font-size:20px;");
-console.log("%cCheck out the source code: https://github.com/LapisHusky/mppclone/tree/main/client\nGuide for coders and bot developers: https://docs.google.com/document/d/1OrxwdLD1l1TE8iau6ToETVmnLuLXyGBhA0VfAY1Lf14/edit?usp=sharing", "color:gray; font-size:12px;")
 
-export default Client
+const getURLChannelName = () => {
+    const hash = decodeURIComponent(globalThis.window.location.hash);
+    return hash.substring(1) || 'lobby';
+}
+
+const gClient = new Client('wss://mppclone.com:8443');
+gClient.start();
+gClient.setChannel(getURLChannelName());
+
+globalThis.window.addEventListener('hashchange', () => {
+    gClient.setChannel(getURLChannelName());
+});
+
+// Legacy API
+(globalThis as any).MPP = {
+    client: gClient
+}
+
+export default gClient
