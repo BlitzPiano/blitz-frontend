@@ -92,6 +92,16 @@ function Chat() {
       }
     }
 
+    const clickHandler = (evt: MouseEvent) => {
+      if (chatting !== 'chatting') return;
+      if (!evt.target) return;
+      const chat = document.getElementById('chat');
+      if (!chat) return;
+      if (!chat.contains(evt.target as HTMLElement)) {
+        unfocus();
+      }
+    }
+
     const channelMessageHandler = (msg: any) => {
       if (!msg.ch) return;
       if (!msg.ch.settings) return;
@@ -109,6 +119,7 @@ function Chat() {
     }
 
     document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('click', clickHandler);
     gClient.on('ch', channelMessageHandler);
     gClient.on('a', chatMessageHandler);
     gClient.on('c', chatHistoryMessageHandler);
@@ -174,7 +185,7 @@ function Chat() {
         })()
       }</ul>
       <input id="chat-input" className="translate" maxLength={512} autoComplete="off" placeholder="You can chat with this thing."
-          onFocus={ focus } onBlur={ unfocus } onKeyDown={ handleInputKeyDown } />
+          onFocus={ focus } onKeyDown={ handleInputKeyDown } />
     </div>
   );
 }
