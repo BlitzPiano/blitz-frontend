@@ -14,3 +14,5 @@ export function Modal(props: ModalProps) {
         </div>
     )
 }
+
+export const gModal: typeof Modal | undefined = undefined;

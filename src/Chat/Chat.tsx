@@ -1,6 +1,7 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, ReactNode, KeyboardEvent as ReactKeyboardEvent } from 'react';
 import './Chat.css'
 import gClient from '../Client';
+import { gModal } from '../Modal/Modal';
 
 interface ChatMessage {
   m: 'a';
@@ -28,13 +29,21 @@ function Chat() {
 
   const addMessage = (msg: any) => {
     setMessages([...messages, msg]);
+    scrollToBottom();
   }
 
   const addMessages = (msgs: ChatMessage[]) => {
-    setMessages([...messages, ...msgs])
+    setMessages([...messages, ...msgs]);
+    scrollToBottom();
   }
 
-  
+  const scrollToBottom = () => {
+    let chatDiv = document.getElementById('chat');
+    if (!chatDiv) return;
+    let ul = chatDiv.getElementsByTagName('ul')[0];
+    if (!ul) return;
+    ul.scrollTop = ul.scrollHeight - ul.clientHeight;
+  }
 
   const focus = () => {
     setChatting('chatting');
@@ -48,12 +57,7 @@ function Chat() {
     const input = document.getElementById('chat-input');
     if (!input) return;
     input.blur();
-    // scroll to bottom
-    let chatDiv = document.getElementById('chat');
-    if (!chatDiv) return;
-    let ul = chatDiv.getElementsByTagName('ul')[0];
-    if (!ul) return;
-    ul.scrollTop = ul.scrollHeight - ul.clientHeight;
+    scrollToBottom();
   }
 
   const toggleFocus = () => {
@@ -62,6 +66,13 @@ function Chat() {
     } else {
       focus();
     }
+  }
+
+  const submitChatMessage = (message: string) => {
+    gClient.sendArray([{
+      m: 'a',
+      message: message
+    }]);
   }
 
   useEffect(() => {
@@ -76,6 +87,8 @@ function Chat() {
           evt.preventDefault();
           evt.stopPropagation();
         }
+      } else if (!gModal && (evt.key === 'Enter' || evt.key === 'Escape')) {
+        focus();
       }
     }
 
@@ -108,13 +121,33 @@ function Chat() {
     }
   });
 
-  const submitChatMessage = () => {
-    const input = document.getElementById('chat-input');
-    if (!input) return;
-    gClient.sendArray([{
-      m: 'a',
-      message: input.innerText
-    }]);
+  const handleInputKeyDown = (evt: ReactKeyboardEvent<HTMLInputElement>) => {
+    if (evt.key === 'Enter') {
+      if (!gClient.isConnected()) return;
+      let message = (evt.target as HTMLInputElement).value;
+
+      if (message.length > 0) {
+        submitChatMessage(message);
+        (evt.target as HTMLInputElement).value = '';
+      }
+
+      // timeout is original behavior
+      setTimeout(() => {
+        unfocus();
+      }, 100);
+
+      evt.preventDefault();
+      evt.stopPropagation();
+    }
+
+    if (evt.key === 'Escape') {
+      unfocus();
+    }
+
+    if (evt.key === 'Tab' || evt.key === 'Escape') {
+      evt.preventDefault();
+      evt.stopPropagation();
+    }
   }
 
   return (
@@ -141,7 +174,7 @@ function Chat() {
         })()
       }</ul>
       <input id="chat-input" className="translate" maxLength={512} autoComplete="off" placeholder="You can chat with this thing."
-          onFocus={ focus } onBlur={ unfocus } onSubmit={ submitChatMessage } />
+          onFocus={ focus } onBlur={ unfocus } onKeyDown={ handleInputKeyDown } />
     </div>
   );
 }
