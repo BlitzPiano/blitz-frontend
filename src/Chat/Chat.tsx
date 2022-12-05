@@ -37,6 +37,10 @@ function Chat() {
     scrollToBottom();
   }
 
+  const removeAllMessages = () => {
+    setMessages(initMessages);
+  }
+
   const scrollToBottom = () => {
     let chatDiv = document.getElementById('chat');
     if (!chatDiv) return;
@@ -111,9 +115,11 @@ function Chat() {
 
     const chatMessageHandler = (msg: any) => {
       addMessage(msg);
+      scrollToBottom();
     }
 
     const chatHistoryMessageHandler = (msg: any) => {
+      removeAllMessages();
       let i = 0;
       addMessages(msg.c.sort((a: ChatMessage, b: ChatMessage) => Number(a.t > b.t)));
     }
