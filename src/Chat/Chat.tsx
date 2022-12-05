@@ -54,6 +54,7 @@ function Chat() {
         const input = document.getElementById('chat-input');
         if (!input) return;
         input.focus();
+        scrollToBottom();
     }
     
     const unfocus = () => {
