@@ -13,6 +13,7 @@ import RoomNotice from './RoomNotice/RoomNotice'
 import SitebanModal from './Modals/SitebanModal/SitebanModal'
 import { TopButton } from './TopButton/TopButton'
 import gClient from './Client'
+import './BackgroundColor'
 
 function App() {
   return (

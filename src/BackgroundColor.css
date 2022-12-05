@@ -1,0 +1,10 @@
+body {
+    background: #3b5054;
+    background: -moz-radial-gradient(center,ellipse cover,#ecfafd 0,#c5d5d8 100%);
+    background: -webkit-gradient(radial,center center,0,center center,100%,color-stop(0,#ecfafd),color-stop(100%,#c5d5d8));
+    background: -webkit-radial-gradient(center,ellipse cover,#ecfafd 0,#c5d5d8 100%);
+    background: -o-radial-gradient(center,ellipse cover,#ecfafd 0,#c5d5d8 100%);
+    background: -ms-radial-gradient(center,ellipse cover,#ecfafd 0,#c5d5d8 100%);
+    background: radial-gradient(ellipse at center,#ecfafd 0,#c5d5d8 100%);
+    transition: background 1s linear;
+}

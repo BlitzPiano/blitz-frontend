@@ -7,7 +7,8 @@ const getURLChannelName = () => {
     return hash.substring(1) || 'lobby';
 }
 
-const gClient = new Client('wss://mppclone.com:8443');
+let uri = 'wss://mppclone.com:8443';
+const gClient = new Client(uri);
 gClient.start();
 gClient.setChannel(getURLChannelName());
 
