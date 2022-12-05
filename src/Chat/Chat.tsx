@@ -1,4 +1,4 @@
-import { useState, useRef, KeyboardEvent, useEffect, useCallback, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import './Chat.css'
 import gClient from '../Client';
 
@@ -56,30 +56,58 @@ function Chat() {
   
   const unfocus = () => {
     setChatting('');
+    // scroll to bottom
+    let chatDiv = document.getElementById('chat');
+    if (!chatDiv) return;
+    let ul = chatDiv.getElementsByTagName('ul')[0];
+    if (!ul) return;
+    ul.scrollTop = ul.scrollHeight - ul.clientHeight;
   }
 
   const toggleFocus = () => {
-    if (chatting == 'chatting') {
+    if (chatting === 'chatting') {
       unfocus();
     } else {
       focus();
     }
   }
 
-  globalThis.window.addEventListener('keydown', evt => {
-    if (evt.key == 'Enter' || evt.key == 'Escape') {
-      toggleFocus();
+  useEffect(() => {
+    const keyDownHandler = (evt: KeyboardEvent) => {
+      if (evt.key === 'Enter') {
+        evt.preventDefault();
+        toggleFocus();
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
     }
   });
 
   return (
     <div id="chat" className={ chatting } style={{ display }}>
-      <ul>{ messages.map<ReactNode>((msg: ChatMessage) => (
-        <li key={`${msg.p._id}-${msg.t}`} style={{ color: msg.p.color, opacity: 1 }}>
-          <span className='name'>{msg.p.name}:</span>
-          <span className='message'>{msg.a}</span>
-        </li>
-      )) }</ul>
+      <ul>{
+        (() => {
+          let opacities: number[] = [];
+          
+          for (let i = Math.min(messages.length, 50); i >= 1; i--) {
+            opacities.push(1.0 - (i * 0.03));
+          }
+
+          return messages.map<ReactNode>((msg: ChatMessage) => {
+            let i = messages.indexOf(msg);
+            return (
+              <li key={`${msg.p._id}-${msg.t}`} style={{ color: msg.p.color, opacity: opacities[i] }}>
+                <span className='name'>{msg.p.name}:</span>
+                <span className='message'>{msg.a}</span>
+              </li>
+            );
+          })
+        })()
+      }</ul>
       <input id="chat-input" className="translate" maxLength={512} autoComplete="off" placeholder="You can chat with this thing."
           onFocus={ focus } onBlur={ unfocus } />
     </div>
