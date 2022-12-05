@@ -34,28 +34,20 @@ function Chat() {
     setMessages([...messages, ...msgs])
   }
 
-  gClient.on('a', (msg: any) => {
-    addMessage(msg);
-  });
   
-  gClient.on('c', (msg: { m: 'c', c: ChatMessage[] }) => {
-    let i = 0;
-    addMessages(msg.c.sort((a: ChatMessage, b: ChatMessage) => Number(a.t > b.t)));
-  });
-  
-  gClient.on('ch', (msg: any) => {
-    if (!msg.ch) return;
-    if (!msg.ch.settings) return;
-    if (msg.ch.settings.chat) setDisplay('unset');
-    else setDisplay('none');
-  });
 
   const focus = () => {
     setChatting('chatting');
+    const input = document.getElementById('chat-input');
+    if (!input) return;
+    input.focus();
   }
   
   const unfocus = () => {
     setChatting('');
+    const input = document.getElementById('chat-input');
+    if (!input) return;
+    input.blur();
     // scroll to bottom
     let chatDiv = document.getElementById('chat');
     if (!chatDiv) return;
@@ -74,18 +66,56 @@ function Chat() {
 
   useEffect(() => {
     const keyDownHandler = (evt: KeyboardEvent) => {
-      if (evt.key === 'Enter') {
-        evt.preventDefault();
-        toggleFocus();
+      if (chatting === 'chatting') {
+        if (evt.key === 'Enter') {
+          focus();
+        }
+
+        if (evt.key === 'Escape') {
+          unfocus();
+          evt.preventDefault();
+          evt.stopPropagation();
+        }
       }
     }
 
+    const channelMessageHandler = (msg: any) => {
+      if (!msg.ch) return;
+      if (!msg.ch.settings) return;
+      if (msg.ch.settings.chat) setDisplay('unset');
+      else setDisplay('none');
+    }
+
+    const chatMessageHandler = (msg: any) => {
+      addMessage(msg);
+    }
+
+    const chatHistoryMessageHandler = (msg: any) => {
+      let i = 0;
+      addMessages(msg.c.sort((a: ChatMessage, b: ChatMessage) => Number(a.t > b.t)));
+    }
+
     document.addEventListener('keydown', keyDownHandler);
+    gClient.on('ch', channelMessageHandler);
+    gClient.on('a', chatMessageHandler);
+    gClient.on('c', chatHistoryMessageHandler);
 
     return () => {
       document.removeEventListener('keydown', keyDownHandler);
+      gClient.off('ch', channelMessageHandler);
+      gClient.off('a', chatMessageHandler);
+      gClient.off('c', chatHistoryMessageHandler);
     }
   });
+
+  const submitChatMessage = () => {
+    const input = document.getElementById('chat-input');
+    if (!input) return;
+    gClient.sendArray([{
+      m: 'a',
+      message: input.innerText
+    }]);
+  }
 
   return (
     <div id="chat" className={ chatting } style={{ display }}>
@@ -94,11 +124,13 @@ function Chat() {
           let opacities: number[] = [];
           
           for (let i = Math.min(messages.length, 50); i >= 1; i--) {
-            opacities.push(1.0 - (i * 0.03));
+            opacities.push((1.0 - (i * 0.03)) || 1);
           }
 
+          opacities.reverse();
+
           return messages.map<ReactNode>((msg: ChatMessage) => {
-            let i = messages.indexOf(msg);
+            let i = messages.length - messages.indexOf(msg);
             return (
               <li key={`${msg.p._id}-${msg.t}`} style={{ color: msg.p.color, opacity: opacities[i] }}>
                 <span className='name'>{msg.p.name}:</span>
@@ -109,7 +141,7 @@ function Chat() {
         })()
       }</ul>
       <input id="chat-input" className="translate" maxLength={512} autoComplete="off" placeholder="You can chat with this thing."
-          onFocus={ focus } onBlur={ unfocus } />
+          onFocus={ focus } onBlur={ unfocus } onSubmit={ submitChatMessage } />
     </div>
   );
 }
