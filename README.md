@@ -12,3 +12,8 @@ Experimental MPP frontend rewritten for Vite/React.
 - [ ] Piano
     - [ ] Audio
     - [ ] Drawing
+
+## Contributors
+
+- Hri
+- Dexter
