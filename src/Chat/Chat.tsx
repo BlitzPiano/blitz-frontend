@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode, KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { useState, useEffect, useRef, useCallback, ReactNode, KeyboardEvent as ReactKeyboardEvent } from 'react';
 import './Chat.css'
 import gClient from '../Client';
 import { gModal } from '../Modal/Modal';
@@ -25,7 +25,7 @@ function Chat() {
     const [chatting, setChatting] = useState('');
     const [display, setDisplay] = useState('none');
     // const [display, setDisplay] = useState('unset');
-    const [messages, setMessages] = useState(initMessages);
+    let [messages, setMessages] = useState(initMessages);
 
     const addMessage = (msg: any) => {
         setMessages([...messages, msg]);
@@ -38,7 +38,9 @@ function Chat() {
     }
 
     const removeAllMessages = () => {
+        messages = initMessages;
         setMessages(initMessages);
+        console.log(messages);
     }
 
     const scrollToBottom = () => {
@@ -46,15 +48,17 @@ function Chat() {
         if (!chatDiv) return;
         let ul = chatDiv.getElementsByTagName('ul')[0];
         if (!ul) return;
-        ul.scrollTop = ul.clientHeight;
+        setTimeout(() => { // i have absolutely no clue why this doesn't work without waiting
+            ul.scrollTop = ul.clientHeight * 7000;
+        }, 1);
     }
 
     const focus = () => {
+        scrollToBottom();
         setChatting('chatting');
         const input = document.getElementById('chat-input');
         if (!input) return;
         input.focus();
-        scrollToBottom();
     }
     
     const unfocus = () => {
@@ -71,6 +75,7 @@ function Chat() {
         } else {
             focus();
         }
+        scrollToBottom();
     }
 
     const submitChatMessage = (message: string) => {
@@ -121,7 +126,6 @@ function Chat() {
 
         const chatHistoryMessageHandler = (msg: any) => {
             removeAllMessages();
-            let i = 0;
             addMessages(msg.c.sort((a: ChatMessage, b: ChatMessage) => Number(a.t > b.t)));
         }
 
@@ -137,7 +141,7 @@ function Chat() {
             gClient.off('a', chatMessageHandler);
             gClient.off('c', chatHistoryMessageHandler);
         }
-    });
+    }, [messages]);
 
     const handleInputKeyDown = (evt: ReactKeyboardEvent<HTMLInputElement>) => {
         if (evt.key === 'Enter') {
