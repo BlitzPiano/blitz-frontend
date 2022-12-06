@@ -46,7 +46,7 @@ function Chat() {
         if (!chatDiv) return;
         let ul = chatDiv.getElementsByTagName('ul')[0];
         if (!ul) return;
-        ul.scrollTop = ul.scrollHeight - ul.clientHeight;
+        ul.scrollTop = ul.clientHeight;
     }
 
     const focus = () => {
@@ -182,8 +182,10 @@ function Chat() {
 
                     return messages.map<ReactNode>((msg: ChatMessage) => {
                         let i = messages.length - messages.indexOf(msg);
+                        let tabIndex = undefined;
+                        if (messages.indexOf(msg) === messages.length - 1) tabIndex = 1;
                         return (
-                            <li key={`${msg.p._id}-${msg.t}`} style={{ color: msg.p.color, opacity: opacities[i] }}>
+                            <li key={`${msg.p._id}-${msg.t}`} style={{ color: msg.p.color, opacity: opacities[i] }} tabIndex={ tabIndex }>
                                 <span className='name'>{msg.p.name}:</span>
                                 <span className='message'>{msg.a}</span>
                             </li>
