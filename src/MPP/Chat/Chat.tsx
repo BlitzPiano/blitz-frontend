@@ -29,6 +29,7 @@ function Chat() {
 
     const addMessage = (msg: any) => {
         setMessages([...messages, msg]);
+        messages = [...messages, msg];
         scrollToBottom();
     }
 
