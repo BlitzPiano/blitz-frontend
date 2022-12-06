@@ -1,23 +1,23 @@
 .ugly-button {
-  height: 12px;
-  font-size: 12px;
-  background: #111;
-  border: 1px solid #444;
-  padding: 5px;
-  cursor: pointer;
-  line-height: 12px;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
+    height: 12px;
+    font-size: 12px;
+    background: #111;
+    border: 1px solid #444;
+    padding: 5px;
+    cursor: pointer;
+    line-height: 12px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .ugly-button:hover {
-  background: #222;
+    background: #222;
 }
 
 .ugly-button.stuck {
-  background: rgba(204,187,170,.35);
+    background: rgba(204,187,170,.35);
 }

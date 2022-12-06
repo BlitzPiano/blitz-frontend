@@ -1,0 +1,135 @@
+#chat {
+    display: none;
+    opacity: 1;
+}
+
+#chat {
+    position: fixed;
+    bottom: 64px;
+    left: 0;
+    width: 100%;
+    vertical-align: bottom;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: #888 1px 1px;
+}
+
+#chat,#chat * {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+#chat ul {
+    list-style: none;
+    margin: 4px;
+    padding: 0;
+    background-attachment: local;
+}
+
+#chat li {
+    padding: 2px;
+    opacity: 0;
+}
+
+#chat li .receivedDm {
+    margin-right: 8px;
+}
+
+#chat li .sentDm {
+    margin-right: 8px;
+}
+
+#chat li .otherDm {
+    margin-right: 8px;
+}
+
+#chat li .dmArrow {
+    margin-right: 8px;
+}
+
+#chat li .timestamp {
+    margin-right: 8px;
+}
+
+#chat li .id {
+    margin-right: 8px;
+}
+
+#chat li .id2 {
+    margin-right: 8px;
+}
+
+#chat li .name {
+    font-weight: 700;
+    margin-right: 8px;
+}
+#chat li .name2 {
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+#chat li .message {
+    margin-right: 6px;
+}
+
+#chat li .quote {
+    color: #789922;
+}
+
+#chat li .mention {
+    color: white;
+    padding: 4px;
+    margin: 2px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    line-height: 15px;
+    text-shadow: #444 1px 1px;
+}
+
+#chat input {
+    margin: 4px;
+    width: 99%;
+    border: 1px solid #fff;
+    background: 0 0;
+    text-shadow: #888 1px 1px;
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+#chat input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+#chat input:-moz-placeholder {
+    color: #ccc;
+}
+
+#chat input:focus {
+    outline: 0;
+    border: 1px solid #ff8;
+}
+
+#chat.chatting {
+    background: rgba(64,80,80,.75);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #888;
+    transition: all .1s;
+}
+
+#chat.chatting li {
+    display: list-item!important;
+    opacity: 1!important;
+    text-shadow: #aaa 1px 1px;
+}
+
+#chat.chatting ul {
+    max-height: 50em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}

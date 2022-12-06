@@ -1,16 +1,16 @@
 #status {
-  position: absolute;
-  left: 0;
-  bottom: 10px;
-  width: 320px;
-  height: 20px;
-  padding: 5px;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 20px;
-  pointer-events: none;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 320px;
+    height: 20px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 20px;
+    pointer-events: none;
 }
 
 #status .number {
-  font-size: 35px;
+    font-size: 35px;
 }

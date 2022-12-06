@@ -1,144 +1,144 @@
 #names {
-  position: fixed;
-  top: 4px;
-  left: 4px;
-  font-size: 12px;
-  width: 90%;
-  width: -webkit-calc(100% - 105px);
-  width: -moz-calc(100% - 105px);
-  width: calc(100% - 105px);
+    position: fixed;
+    top: 4px;
+    left: 4px;
+    font-size: 12px;
+    width: 90%;
+    width: -webkit-calc(100% - 105px);
+    width: -moz-calc(100% - 105px);
+    width: calc(100% - 105px);
 }
 
 #names .name {
-  float: left;
-  position: relative;
-  padding: 4px;
-  margin: 2px;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  min-width: 50px;
-  text-align: center;
-  cursor: pointer;
-  min-height: 15px;
-  line-height: 15px;
-  max-width: 100%;
+    float: left;
+    position: relative;
+    padding: 4px;
+    margin: 2px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    min-width: 50px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 15px;
+    line-height: 15px;
+    max-width: 100%;
 }
 
 #names .name.me:after {
-  content: "Me";
-  position: absolute;
-  top: -4px;
-  right: 50%;
-  font-size: 10px;
+    content: "Me";
+    position: absolute;
+    top: -4px;
+    right: 50%;
+    font-size: 10px;
 }
 
 #names .name.owner:before {
-  content: url(/crown.png);
-  position: absolute;
-  top: -8px;
-  left: 4px;
+    content: url(/crown.png);
+    position: absolute;
+    top: -8px;
+    left: 4px;
 }
 
 #names .name.play {
-  transform: translateY(-4px);
-  -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
 }
 
 #names .name.muted-notes {
-  color: #f88;
+    color: #f88;
 }
 
 #names .name.muted-notes:after {
-  content: "MUTE";
-  position: absolute;
-  top: -4px;
-  right: 50%;
-  font-size: 8px;
+    content: "MUTE";
+    position: absolute;
+    top: -4px;
+    right: 50%;
+    font-size: 8px;
 }
 
 #names .name.muted-chat {
-  color: #f88;
+    color: #f88;
 }
 
 #names .name.muted-chat:after {
-  content: "MUTE";
-  position: absolute;
-  top: -4px;
-  right: 50%;
-  font-size: 8px;
+    content: "MUTE";
+    position: absolute;
+    top: -4px;
+    right: 50%;
+    font-size: 8px;
 }
 
 .nametag {
-  float: left;
-  position: relative;
-  padding: 4px;
-  margin-right: 5px;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 10px;
-  line-height: 7px;
+    float: left;
+    position: relative;
+    padding: 4px;
+    margin-right: 5px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 7px;
 }
 
 .nametext {
-  white-space: pre;
-  white-space: -moz-nowrap !important;
-  white-space: -webkit-nowrap;
-  white-space: nowrap;
-  word-wrap: break-word;
-  word-break: break-all;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+    white-space: pre;
+    white-space: -moz-nowrap !important;
+    white-space: -webkit-nowrap;
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .participant-menu {
-  display: none;
-  position: fixed;
-  background: #000;
-  width: 150px;
-  font-size: 12px;
-  padding: 0;
-  margin: 0;
-  border-radius: 2px;
+    display: none;
+    position: fixed;
+    background: #000;
+    width: 150px;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
 }
 
 .participant-menu:last-child .menu-item:hover {
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
 .participant-menu .info {
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  font-size: 9px;
-  color: rgba(255,255,255,.9);
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity .2s ease-out;
-  user-select: text;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 9px;
+    color: rgba(255,255,255,.9);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+    user-select: text;
 }
 
 .participant-menu .info:hover {
-  opacity: 1;
-  transition: opacity .2s ease-out;
+    opacity: 1;
+    transition: opacity .2s ease-out;
 }
 
 .participant-menu .menu-item {
-  cursor: pointer;
-  margin: 0;
-  padding: 15px 5px;
-  border-top: 1px solid rgba(255,255,255,.3);
+    cursor: pointer;
+    margin: 0;
+    padding: 15px 5px;
+    border-top: 1px solid rgba(255,255,255,.3);
 }
 
 .participant-menu .menu-item:hover {
-  background: rgba(255,255,255,.4);
+    background: rgba(255,255,255,.4);
 }
 
 .participant-menu .menu-item.clicked {
-  background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.5);
 }
