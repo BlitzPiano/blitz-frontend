@@ -156,103 +156,6 @@ input[type="range"]:hover {
   left: 100%;
 }
 
-.cursor {
-  width: 18px;
-  height: 24px;
-  background: url(/cursor.png);
-  position: absolute;
-  pointer-events: none;
-  margin-left: -2px;
-  margin-top: -2px;
-  left: 200%;
-  top: 100%;
-}
-
-.cursor .name {
-  display: inline;
-  position: relative;
-  left: 16px;
-  top: 8px;
-  pointer-events: none;
-  color: #fff;
-  background: #000;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  white-space: nowrap;
-  padding: 1px;
-  font-size: 10px;
-}
-
-.cursor.owner .name:after {
-  content: url(/crown.png);
-  position: relative;
-  top: -8px;
-  left: 0;
-}
-
-.cursor .name {
-  display: inline-block;
-}
-
-.cursor {
-  transition: top .1s, left .1s;
-}
-
-#cursors[smooth-cursors] .cursor {
-  top: 0;
-  left: 0;
-  transition: transform .1s linear;
-}
-
-.participant-menu {
-  display: none;
-  position: fixed;
-  background: #000;
-  width: 150px;
-  font-size: 12px;
-  padding: 0;
-  margin: 0;
-  border-radius: 2px;
-}
-
-.participant-menu:last-child .menu-item:hover {
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
-}
-
-.participant-menu .info {
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  font-size: 9px;
-  color: rgba(255,255,255,.9);
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity .2s ease-out;
-  user-select: text;
-}
-
-.participant-menu .info:hover {
-  opacity: 1;
-  transition: opacity .2s ease-out;
-}
-
-.participant-menu .menu-item {
-  cursor: pointer;
-  margin: 0;
-  padding: 15px 5px;
-  border-top: 1px solid rgba(255,255,255,.3);
-}
-
-.participant-menu .menu-item:hover {
-  background: rgba(255,255,255,.4);
-}
-
-.participant-menu .menu-item.clicked {
-  background: rgba(255,255,255,.5);
-}
-
 #crown {
   position: absolute;
   width: 16px;
@@ -265,145 +168,6 @@ input[type="range"]:hover {
 #crown span {
   margin-left: 16px;
   margin-top: 2px;
-}
-
-#room-notice {
-  position: fixed;
-  top: 20%;
-  width: 100%;
-  text-align: center;
-  opacity: .5;
-  font-size: 20px;
-  pointer-events: none;
-  display: none;
-}
-
-#room-notice p {
-  margin: 1em;
-}
-
-#bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: #9a9;
-  margin-bottom: 3px;
-}
-
-#room,#room * {
-  cursor: pointer;
-}
-
-#room {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 5px;
-  width: 240px;
-  height: 12px;
-  background: #444;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  margin: 4px 24px;
-  font-size: 12px;
-}
-
-#room .info {
-  white-space: nowrap;
-  line-height: 12px;
-  overflow: hidden;
-  height: 20px;
-}
-
-#room .info.lobby {
-  color: #efb;
-}
-
-#room .info.not-visible {
-  color: #8cf;
-}
-
-#room .info.banned {
-  color: #f88;
-}
-
-#room .info.crownsolo:after {
-  content: url('/crownsolo.png');
-  position: relative; top: 2px;
-  margin-left: 4px;
-}
-
-#room .info.no-chat:after {
-  content: url('/no-chat.png');
-  position: relative; top: 2px;
-  margin-left: 4px;
-}
-
-#room .expand {
-  width: 24px;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: #777 url(/arrow.png) no-repeat center 0;
-}
-
-#room .more {
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  left: -1px;
-  width: 100%;
-  overflow: hidden;
-  overflow-y: scroll;
-  background: #444;
-  border: 1px solid #ccc;
-  max-height: 600px;
-}
-
-#room .more>div {
-  margin: 0;
-  padding: 3px 6px 0 6px;
-  width: 100%;
-  height: 20px;
-}
-
-#room .more .info:hover {
-  background: #666;
-}
-
-#room .more .new {
-  background: #111;
-}
-
-#room .more .new:hover {
-  background: #333;
-}
-
-.ugly-button {
-  height: 12px;
-  font-size: 12px;
-  background: #111;
-  border: 1px solid #444;
-  padding: 5px;
-  cursor: pointer;
-  line-height: 12px;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.ugly-button:hover {
-  background: #222;
-}
-
-.ugly-button.stuck {
-  background: rgba(204,187,170,.35);
 }
 
 #new-room-btn {
@@ -448,26 +212,31 @@ input[type="range"]:hover {
   left: 540px;
   top: 32px;
 }
+
 #client-settings-btn {
   position: absolute;
   left: 660px;
   top: 32px;
 }
+
 #account-btn {
   position: absolute;
   left: 780px;
   top: 32px;
 }
+
 #clearchat-btn {
   position: absolute;
   left: 780px;
   top: 4px;
 }
+
 #getcrown-btn {
   position: absolute;
   left: 900px;
   top: 32px;
 }
+
 #vanish-btn {
   position: absolute;
   left: 900px;

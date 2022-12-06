@@ -1,0 +1,49 @@
+.cursor {
+  width: 18px;
+  height: 24px;
+  background: url(/cursor.png);
+  position: absolute;
+  pointer-events: none;
+  margin-left: -2px;
+  margin-top: -2px;
+  left: 200%;
+  top: 100%;
+}
+
+.cursor .name {
+  display: inline;
+  position: relative;
+  left: 16px;
+  top: 8px;
+  pointer-events: none;
+  color: #fff;
+  background: #000;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  white-space: nowrap;
+  padding: 1px;
+  font-size: 10px;
+}
+
+.cursor.owner .name:after {
+  content: url(/crown.png);
+  position: relative;
+  top: -8px;
+  left: 0;
+}
+
+.cursor .name {
+  display: inline-block;
+}
+
+.cursor {
+  transition: top .1s, left .1s;
+}
+
+/*! FYI smooth cursors bug out in Firefox */
+#cursors[smooth-cursors] .cursor {
+  top: 0;
+  left: 0;
+  transition: transform .1s linear;
+}

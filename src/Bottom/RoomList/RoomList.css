@@ -1,0 +1,89 @@
+#room,#room * {
+  cursor: pointer;
+}
+
+#room {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px;
+  width: 240px;
+  height: 12px;
+  background: #444;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin: 4px 24px;
+  font-size: 12px;
+}
+
+#room .info {
+  white-space: nowrap;
+  line-height: 12px;
+  overflow: hidden;
+  height: 20px;
+}
+
+#room .info.lobby {
+  color: #efb;
+}
+
+#room .info.not-visible {
+  color: #8cf;
+}
+
+#room .info.banned {
+  color: #f88;
+}
+
+#room .info.crownsolo:after {
+  content: url('/crownsolo.png');
+  position: relative; top: 2px;
+  margin-left: 4px;
+}
+
+#room .info.no-chat:after {
+  content: url('/no-chat.png');
+  position: relative; top: 2px;
+  margin-left: 4px;
+}
+
+#room .expand {
+  width: 24px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #777 url(/arrow.png) no-repeat center 0;
+}
+
+#room .more {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: -1px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  background: #444;
+  border: 1px solid #ccc;
+  max-height: 600px;
+}
+
+#room .more>div {
+  margin: 0;
+  padding: 3px 6px 0 6px;
+  width: 100%;
+  height: 20px;
+}
+
+#room .more .info:hover {
+  background: #666;
+}
+
+#room .more .new {
+  background: #111;
+}
+
+#room .more .new:hover {
+  background: #333;
+}

@@ -94,3 +94,51 @@
   text-overflow: ellipsis;
   max-width: 100%;
 }
+
+.participant-menu {
+  display: none;
+  position: fixed;
+  background: #000;
+  width: 150px;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  border-radius: 2px;
+}
+
+.participant-menu:last-child .menu-item:hover {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.participant-menu .info {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 9px;
+  color: rgba(255,255,255,.9);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .2s ease-out;
+  user-select: text;
+}
+
+.participant-menu .info:hover {
+  opacity: 1;
+  transition: opacity .2s ease-out;
+}
+
+.participant-menu .menu-item {
+  cursor: pointer;
+  margin: 0;
+  padding: 15px 5px;
+  border-top: 1px solid rgba(255,255,255,.3);
+}
+
+.participant-menu .menu-item:hover {
+  background: rgba(255,255,255,.4);
+}
+
+.participant-menu .menu-item.clicked {
+  background: rgba(255,255,255,.5);
+}
