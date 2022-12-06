@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import App from './MPP/App'
 import './index.css'
-import './Client.ts'
 
 // ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 //   <React.StrictMode>
@@ -11,7 +10,7 @@ import './Client.ts'
 // )
 
 ReactDOM.createRoot(document.body as HTMLElement).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <App />
-  // </React.StrictMode>
+  </React.StrictMode>
 )

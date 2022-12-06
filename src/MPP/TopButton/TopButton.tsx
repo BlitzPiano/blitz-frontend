@@ -20,7 +20,7 @@ export type TopButtonProps = TopButtonPropsText | TopButtonPropsIcon;
 export function TopButton(props: TopButtonProps) {
     if (props.type == 'icon') {
         return (
-            <button className={`top-button icon-button ${props.className}`}><img src={ props.icon } style={{ verticalAlign: 'middle' }} /></button>
+            <button className={`top-button icon-button ${props.className}`}><img src={ props.icon } style={{ verticalAlign: 'middle' }} loading="lazy" /></button>
         )
     } else {
         return (

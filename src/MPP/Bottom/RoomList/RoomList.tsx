@@ -118,7 +118,7 @@ function RoomList() {
     });
 
     const handleClick = (evt: ReactMouseEvent) => {
-        evt.stopPropagation();
+        // evt.stopPropagation();
         setMoreVisibility(true);
         gClient.sendArray([{ m: 'ls' }]);
 

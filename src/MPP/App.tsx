@@ -1,4 +1,5 @@
 import './App.css'
+import './Client.ts'
 import Bottom from './Bottom/Bottom'
 import Chat from './Chat/Chat'
 import Cursors from './Cursors/Cursors'
