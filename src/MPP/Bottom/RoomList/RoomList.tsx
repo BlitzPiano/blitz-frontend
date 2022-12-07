@@ -1,5 +1,5 @@
 import { useEffect, MouseEvent as ReactMouseEvent, useState } from 'react'
-import gClient from '../../Client';
+import gClient, { changeRoom } from '../../Client';
 import './RoomList.css'
 
 export interface Vector2 {
@@ -118,9 +118,19 @@ function RoomList() {
     });
 
     const handleClick = (evt: ReactMouseEvent) => {
-        // evt.stopPropagation();
-        setMoreVisibility(true);
-        gClient.sendArray([{ m: 'ls' }]);
+        const target = evt.target as HTMLDivElement;
+        const more = document.getElementsByClassName('more')[0];
+        if (!more) return;
+
+        // clicks on a new room
+        if (more.contains(target) && target.classList.contains('info')) {
+            setMoreVisibility(false);
+
+            const selectedName = target.getAttribute('roomname');
+            if (typeof selectedName == 'string') {
+                changeRoom(selectedName, 'right');
+            }
+        }
 
         const documentMouseHandler = (evt: MouseEvent) => {
             const target = evt.target as HTMLElement;

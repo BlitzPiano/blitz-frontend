@@ -9,7 +9,8 @@
     left: 0;
     width: 100%;
     vertical-align: bottom;
-    font-size: 13px;
+    /* font-size: 13px; */
+    font-size: 11pt;
     color: #fff;
     text-shadow: #888 1px 1px;
 }

@@ -1,4 +1,5 @@
 import './Piano.css'
+import gClient from '../Client'
 
 function Piano() {
     return (
