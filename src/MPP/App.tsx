@@ -15,6 +15,7 @@ import SitebanModal from './Modals/SitebanModal/SitebanModal'
 import { TopButton } from './TopButton/TopButton'
 import gClient from './Client'
 import './BackgroundColor'
+import Crown from './Crown/Crown'
 
 function App() {
   return (
@@ -66,6 +67,8 @@ function App() {
         <RoomSettingsModal />
         <SitebanModal />
       </div>
+
+      <Crown />
     </>
   )
 }
