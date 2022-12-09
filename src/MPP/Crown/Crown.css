@@ -1,0 +1,17 @@
+#crown {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url(/crown.png) no-repeat;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+#crown span {
+    margin-left: 16px;
+    margin-top: 2px;
+}
+
+#crown {
+    z-index: 600;
+}
