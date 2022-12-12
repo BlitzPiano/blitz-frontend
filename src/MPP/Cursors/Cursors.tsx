@@ -8,7 +8,13 @@ function Cursors() {
     const [cursors, setCursors] = useState(new Array<ReactNode>());
     useEffect(() => {
         const handleCursorMessage = (msg: CursorMessage) => {
-            
+            const part = gClient.ppl[msg.id];
+            if (!part) return;
+            if (!part.cursorDiv) {
+                const cursorDiv = <Cursor key={ part.id } id={ part.id } />
+                part.cursorDiv = cursorDiv;
+                setCursors([...cursors, part.cursorDiv]);
+            }
         }
 
         const handleParticipantAdded = (p: Participant) => {
