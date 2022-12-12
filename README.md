@@ -6,6 +6,7 @@ Experimental MPP frontend rewritten for Vite/React.
 
 - [x] Static HTML
 - [x] Chat handling
+- [ ] Cursors
 - [ ] Room list
 - [ ] Modal dialogs
 - [ ] Room notices (no cussing, crownsolo)
